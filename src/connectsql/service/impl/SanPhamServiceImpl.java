@@ -22,4 +22,14 @@ public class SanPhamServiceImpl implements SanPhamService {
         return sanPhamRepository.getListFromDb();
     }
 
+    @Override
+    public String them(SanPham sanPham) {
+        if (sanPhamRepository.addNew(sanPham)) {
+            return "Them thanh cong";
+        } else {
+            return "Them that bai";
+        }
+
+    }
+
 }

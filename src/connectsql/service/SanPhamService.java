@@ -12,5 +12,8 @@ import java.util.ArrayList;
  * @author nguyenvv
  */
 public interface SanPhamService {
+
     ArrayList<SanPham> getAll();
+
+    String them(SanPham sanPham);
 }

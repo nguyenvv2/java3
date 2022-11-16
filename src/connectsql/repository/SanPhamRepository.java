@@ -37,9 +37,26 @@ public class SanPhamRepository {
 
         return listSp;
     }
-    
+
+    public Boolean addNew(SanPham sanPham) {
+        String sql = "insert into SanPham (ma, ten) VALUES (?,?)";
+        int check;
+        try (Connection con = connection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setObject(1, sanPham.getMa());
+            ps.setObject(2, sanPham.getTen());
+
+            check = ps.executeUpdate();
+            return check > 0;
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
-        ArrayList<SanPham> list = new  SanPhamRepository().getListFromDb();
+        ArrayList<SanPham> list = new SanPhamRepository().getListFromDb();
         for (SanPham sanPham : list) {
             System.out.println(sanPham.toString());
         }
