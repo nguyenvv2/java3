@@ -5,6 +5,7 @@
         <group>
             <file>file:/Users/nguyenvv/Documents/FPT_Poly/Source/Java3/src/connectsql/view/SanPhamView.java</file>
             <file>file:/Users/nguyenvv/Documents/FPT_Poly/Source/Java3/src/connectsql/service/impl/SanPhamServiceImpl.java</file>
+            <file>file:/Users/nguyenvv/Documents/FPT_Poly/Source/Java3/src/luyentap/luyentap.java</file>
             <file>file:/Users/nguyenvv/Documents/FPT_Poly/Source/Java3/src/connectsql/repository/SanPhamRepository.java</file>
             <file>file:/Users/nguyenvv/Documents/FPT_Poly/Source/Java3/src/connectsql/service/SanPhamService.java</file>
         </group>
