@@ -13,3 +13,13 @@ ALTER TABLE [dbo].[SanPham] ADD PRIMARY KEY CLUSTERED
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
+
+
+-- sql luyen tap 
+
+CREATE TABLE sinh_vien(
+    ma_sinh_vien VARCHAR(50) PRIMARY KEY,
+    ten_sinh_vien VARCHAR(50),
+    ten_lop VARCHAR(50),
+    gioi_tinh INT
+)
