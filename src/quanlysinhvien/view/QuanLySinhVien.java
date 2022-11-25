@@ -32,11 +32,11 @@ public class QuanLySinhVien extends javax.swing.JFrame {
     }
 
     private void loadTable(ArrayList<SinhVien> list) {
-        defaultTableModel = (DefaultTableModel) jTable1.getModel();
+        defaultTableModel = (DefaultTableModel) tbSinhVien.getModel();
         defaultTableModel.setRowCount(0);
         for (SinhVien sinhVien : list) {
             defaultTableModel.addRow(new Object[]{
-                sinhVien.getHoTen(), sinhVien.getLop(), 2022 - sinhVien.getNamSinh(), sinhVien.getGioiTinh()
+                sinhVien.getHoTen(), sinhVien.getLop(), sinhVien.getNamSinh(), sinhVien.getGioiTinh()
             });
         }
     }
@@ -64,7 +64,7 @@ public class QuanLySinhVien extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbSinhVien = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -80,7 +80,7 @@ public class QuanLySinhVien extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbSinhVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -88,10 +88,15 @@ public class QuanLySinhVien extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Họ Tên", "Tên Lớp", "Tuổi", "Giới tính"
+                "Họ Tên", "Tên Lớp", "Nam Sinh", "Giới tính"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tbSinhVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbSinhVienMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbSinhVien);
 
         jLabel1.setText("Họ Tên");
 
@@ -197,11 +202,29 @@ public class QuanLySinhVien extends javax.swing.JFrame {
         sinhVienNew.setLop(lopNew);
         sinhVienNew.setNamSinh(Integer.parseInt(namSinh));
 
-        int vitri = jTable1.getSelectedRow();
+        int vitri = tbSinhVien.getSelectedRow();
         JOptionPane.showMessageDialog(this, quanLySinhVienService.sua(vitri, sinhVienNew));
         loadTable(quanLySinhVienService.getList());
 //        quanLySinhVienService.sua(vitri, sinhVienNew);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void tbSinhVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbSinhVienMouseClicked
+        // TODO add your handling code here:
+        int row = tbSinhVien.getSelectedRow();
+        
+        String hoTen = (String) tbSinhVien.getValueAt(row, 0);
+        String tenLop = (String) tbSinhVien.getValueAt(row, 1);
+        Integer namSinh = (Integer) tbSinhVien.getValueAt(row, 2);
+        
+        SinhVien svien = new SinhVien();
+        svien.setHoTen(hoTen);
+        svien.setLop(tenLop);
+        svien.setNamSinh(namSinh);
+        
+        new detail(svien).setVisible(true);
+        
+        
+    }//GEN-LAST:event_tbSinhVienMouseClicked
 
     /**
      * @param args the command line arguments
@@ -251,7 +274,7 @@ public class QuanLySinhVien extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbSinhVien;
     private javax.swing.JTextField txtTen;
     // End of variables declaration//GEN-END:variables
 }
